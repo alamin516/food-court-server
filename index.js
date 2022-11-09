@@ -18,7 +18,13 @@ async function run() {
     try {
         const foodCollections = client.db('foodCourt').collection('services')
 
-        
+        app.get('/services', async (req, res) => {
+            const query = {}
+            const cursor = foodCollections.find(query);
+            const service = await cursor.toArray();
+            res.send(service);
+            console.log(service);
+        })
 
         app.post('/service', async (req, res)=>{
             const service = req.body;
