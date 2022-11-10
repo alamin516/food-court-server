@@ -60,7 +60,6 @@ async function run() {
             const cursor = reviewCollections.find(query);
             const review = await cursor.toArray();
             res.send(review)
-            console.log(query);
         })
 
 
