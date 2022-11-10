@@ -31,7 +31,6 @@ async function run() {
             const query = { _id: ObjectId(id) }
             const service = await foodCollections.findOne(query);
             res.send(service);
-            console.log(service);
 
         })
 
@@ -53,14 +52,15 @@ async function run() {
         // Reviews
         app.get('/reviews', async (req, res)=>{
             let query = {}
-            if (req.query.email) {
+            if(req.query.email) {
                 query = {
-                    email: req.query.email
+                    email : req.query.email
                 }
             }
             const cursor = reviewCollections.find(query);
             const review = await cursor.toArray();
             res.send(review)
+            console.log(query);
         })
 
 
